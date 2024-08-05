@@ -11,21 +11,18 @@ plugins {
     id("build-settings-default")
 }
 
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("buildCatalog") {
-            from(files("./gradle/catalogs/buildCatalog.versions.toml"))
-        }
-    }
-}
-
 rootProject.name = "nirmato-ai"
 
 includeModule("nirmato-ai-core")
 
-listOf("nirmato-model-ollama").forEach {
+fun includeAll(module: String) {
+    include(module)
 
+    val name = module.replace(":", "/")
+    file("$rootDir/$name").listFiles().forEach {
+        include("$module:${it.name}")
+    }
 }
 
-listOf("nirmato-store-chroma").forEach {
-}
+includeAll("adapters:models")
+includeAll("adapters:vector-stores")
