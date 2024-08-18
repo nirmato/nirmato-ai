@@ -92,14 +92,14 @@ kotlin {
                 srcDirs("src/commonMain/kotlinX")
             }
             dependencies {
-                implementation(libraries.bundles.kotlinx.coroutines)
+                implementation(libraries.kotlinx.coroutines.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
                 implementation(libraries.kotlin.test)
-                implementation(libraries.bundles.kotlinx.coroutines.test)
+                implementation(libraries.kotlinx.coroutines.test)
             }
         }
 

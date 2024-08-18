@@ -8,6 +8,7 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 plugins {
     alias(libraries.plugins.kotlin.serialization) apply false
     alias(libraries.plugins.kotlinx.kover) apply false
+    alias(libraries.plugins.kotlinx.bcv)
     alias(libraries.plugins.kotlin.dokka)
     alias(libraries.plugins.detekt)
 }
@@ -20,6 +21,17 @@ allprojects {
             failOnNonReproducibleResolution()
         }
     }
+}
+
+apiValidation {
+    ignoredPackages.add("org.nirmato.ai.internal")
+
+    ignoredProjects.addAll(
+        listOf(
+            "nirmato-ai-bom",
+            "nirmato-ai-version-catalog",
+        )
+    )
 }
 
 plugins.withType<YarnPlugin> {
@@ -56,4 +68,7 @@ tasks {
             println("Gradle wrapper version: $gradleVersion")
         }
     }
+
+    // Fix CodeQL workflow execution
+    val testClasses by registering
 }

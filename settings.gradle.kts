@@ -14,6 +14,8 @@ plugins {
 rootProject.name = "nirmato-ai"
 
 includeModule("nirmato-ai-core")
+includeModule("nirmato-ai-bom")
+includeModule("nirmato-ai-version-catalog")
 
 fun includeAll(module: String) {
     include(module)
