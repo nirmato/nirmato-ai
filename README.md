@@ -1,6 +1,6 @@
 # nirmato-ai
 
-![![kotlin](https://kotlinlang.org/)](https://img.shields.io/badge/kotlin--multiplatform-2.0.10-blue.svg?logo=kotlin) ![![License](https://github.com/nirmato/nirmato-ai/blob/main/LICENSE.md)](https://img.shields.io/github/license/nirmato/nirmato-ai)
+![![kotlin](https://kotlinlang.org/)](https://img.shields.io/badge/kotlin--multiplatform-2.0.20-blue.svg?logo=kotlin) ![![License](https://github.com/nirmato/nirmato-ai/blob/main/LICENSE.md)](https://img.shields.io/github/license/nirmato/nirmato-ai)
 
 ![badge][badge-jvm] ![badge][badge-js] ![badge][badge-nodejs] ![badge][badge-wasm-js]
 
@@ -30,7 +30,7 @@ Nirmato AI is an application framework to develop AI applications.
  
 ## Compatibility
 
-* Kotlin 2.0.10 or later
+* Kotlin 2.0.20 or later
 
 ## Contributions
 
