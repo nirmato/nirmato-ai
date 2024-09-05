@@ -9,7 +9,7 @@ plugins {
     alias(libraries.plugins.kotlin.serialization) apply false
     alias(libraries.plugins.kotlinx.kover) apply false
     alias(libraries.plugins.kotlinx.bcv)
-    alias(libraries.plugins.kotlin.dokka)
+    alias(libraries.plugins.dokka.gradle.plugin)
     alias(libraries.plugins.detekt)
 }
 

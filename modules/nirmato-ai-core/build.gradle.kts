@@ -9,10 +9,11 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
     id(libraries.plugins.kotlin.multiplatform.get().pluginId)
-    alias(libraries.plugins.kotlin.dokka)
+    alias(libraries.plugins.dokka.gradle.plugin)
     alias(libraries.plugins.kotlinx.kover)
 
     id("build-project-default")
+    id("build-publishing")
 }
 
 kotlin {
@@ -66,7 +67,7 @@ kotlin {
     sourceSets {
         all {
             languageSettings.apply {
-                apiVersion = ApiVersion.KOTLIN_2_0.toString()
+                apiVersion = ApiVersion.KOTLIN_1_7.toString()
                 languageVersion = LanguageVersion.KOTLIN_2_0.toString()
                 progressiveMode = true
 
