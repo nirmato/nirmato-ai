@@ -10,6 +10,7 @@ kotlinx-io = "0.5.1"
 kotlinx-kover = "0.8.3"
 kotlinx-serialization = "1.6.3"
 dokka-gradle-plugin = "1.9.20"
+ktor = "2.3.12"
 
 [libraries]
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka-gradle-plugin" }
@@ -49,6 +50,38 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-serialization-json-js = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-js", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json-jvm = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-jvm", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json-wasm-js = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-wasm-js", version.ref = "kotlinx-serialization" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-cio-jvm = { module = "io.ktor:ktor-client-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-content-negotiation-js = { module = "io.ktor:ktor-client-content-negotiation-js", version.ref = "ktor" }
+ktor-client-content-negotiation-jvm = { module = "io.ktor:ktor-client-content-negotiation-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation-wasm-js = { module = "io.ktor:ktor-client-content-negotiation-wasm-js", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-core-js = { module = "io.ktor:ktor-client-core-js", version.ref = "ktor" }
+ktor-client-core-jvm = { module = "io.ktor:ktor-client-core-jvm", version.ref = "ktor" }
+ktor-client-core-wasm-js = { module = "io.ktor:ktor-client-core-wasm-js", version.ref = "ktor" }
+ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
+ktor-client-curl-mingwx64 = { module = "io.ktor:ktor-client-curl-mingwx64", version.ref = "ktor" }
+ktor-client-java = { module = "io.ktor:ktor-client-java", version.ref = "ktor" }
+ktor-client-java-jvm = { module = "io.ktor:ktor-client-jvm", version.ref = "ktor" }
+ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
+ktor-client-js-js = { module = "io.ktor:ktor-client-js-js", version.ref = "ktor" }
+ktor-client-json = { module = "io.ktor:ktor-client-json", version.ref = "ktor" }
+ktor-client-json-js = { module = "io.ktor:ktor-client-json-js", version.ref = "ktor" }
+ktor-client-json-jvm = { module = "io.ktor:ktor-client-json-jvm", version.ref = "ktor" }
+ktor-client-json-wasm-js = { module = "io.ktor:ktor-client-json-wasm-js", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-logging-js = { module = "io.ktor:ktor-client-logging-js", version.ref = "ktor" }
+ktor-client-logging-jvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
+ktor-client-logging-wasm-js = { module = "io.ktor:ktor-client-logging-wasm-js", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-client-mock-js = { module = "io.ktor:ktor-client-mock-js", version.ref = "ktor" }
+ktor-client-mock-jvm = { module = "io.ktor:ktor-client-mock-jvm", version.ref = "ktor" }
+ktor-client-mock-wasm-js = { module = "io.ktor:ktor-client-mock-wasm-js", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-serialization-kotlinx-json-js = { module = "io.ktor:ktor-serialization-kotlinx-json-js", version.ref = "ktor" }
+ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-serialization-kotlinx-json-wasm-js = { module = "io.ktor:ktor-serialization-kotlinx-json-wasm-js", version.ref = "ktor" }
 
 [bundles]
 

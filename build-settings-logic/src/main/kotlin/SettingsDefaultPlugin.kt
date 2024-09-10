@@ -40,6 +40,11 @@ public class SettingsDefaultPlugin : Plugin<Settings> {
                     }
                 }
                 mavenCentral()
+                mavenLocal {
+                    content {
+                        includeGroupAndSubgroups("org.nirmato")
+                    }
+                }
             }
 
             versionCatalogs {

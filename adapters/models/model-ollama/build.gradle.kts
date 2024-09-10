@@ -1,5 +1,8 @@
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import org.jetbrains.kotlin.config.ApiVersion
 import org.jetbrains.kotlin.config.LanguageVersion
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import build.gradle.dsl.withCompilerArguments
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
@@ -9,7 +12,6 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
     id(libraries.plugins.kotlin.multiplatform.get().pluginId)
-    alias(libraries.plugins.dokka.gradle.plugin)
     alias(libraries.plugins.kotlinx.kover)
 
     id("build-project-default")
@@ -67,7 +69,7 @@ kotlin {
     sourceSets {
         all {
             languageSettings.apply {
-                apiVersion = ApiVersion.KOTLIN_1_7.toString()
+                apiVersion = ApiVersion.KOTLIN_2_0.toString()
                 languageVersion = LanguageVersion.KOTLIN_2_0.toString()
                 progressiveMode = true
 
@@ -89,8 +91,13 @@ kotlin {
             kotlin {
                 srcDirs("src/commonMain/kotlinX")
             }
+
             dependencies {
                 implementation(libraries.kotlinx.coroutines.core)
+                implementation(libraries.kotlinx.serialization.core)
+
+                implementation(project(":core"))
+                implementation("org.nirmato.ollama:nirmato-ollama-client-ktor:unspecified")
             }
         }
 
@@ -100,6 +107,7 @@ kotlin {
                 implementation(libraries.kotlinx.coroutines.test)
             }
         }
+
     }
 }
 
@@ -118,5 +126,13 @@ tasks {
         }
         failOnWarning.set(true)
         offlineMode.set(true)
+    }
+}
+
+publishing {
+    publications.configureEach {
+        with(this as MavenPublication) {
+            artifactId = "${rootProject.name}-${project.name}-$name"
+        }
     }
 }

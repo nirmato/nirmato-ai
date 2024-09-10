@@ -1,8 +1,5 @@
-@file:OptIn(ExperimentalWasmDsl::class)
-
 import org.jetbrains.kotlin.config.ApiVersion
 import org.jetbrains.kotlin.config.LanguageVersion
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import build.gradle.dsl.withCompilerArguments
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
@@ -15,6 +12,7 @@ plugins {
     alias(libraries.plugins.kotlinx.kover)
 
     id("build-project-default")
+    id("build-publishing")
 }
 
 kotlin {
@@ -120,5 +118,13 @@ tasks {
         }
         failOnWarning.set(true)
         offlineMode.set(true)
+    }
+}
+
+publishing {
+    publications.configureEach {
+        with(this as MavenPublication) {
+            artifactId = "${rootProject.name}-${project.name}-$name"
+        }
     }
 }
