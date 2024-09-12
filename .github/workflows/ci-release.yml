@@ -1,10 +1,22 @@
 name: CI Release
 
 on:
-    push:
-        tags:
-            - '*'
+    release:
+        types:
+            - prereleased
+            - released
 
 jobs:
-    checks:
-        uses: ./.github/workflows/run-checks.yml
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+                with:
+                    ref: ${{ github.event.release.tag_name }}
+
+            -   name: Setup environment
+                uses: ./.github/actions/setup-environment
+                with:
+                    cache-read-only: false

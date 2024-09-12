@@ -12,7 +12,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${getKotlinPluginVersion()}")
+    api(libraries.kotlin.gradle.plugin)
 }
 
 sourceSets {

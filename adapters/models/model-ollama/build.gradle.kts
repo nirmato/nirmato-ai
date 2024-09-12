@@ -1,19 +1,10 @@
-@file:OptIn(ExperimentalWasmDsl::class)
-
-import org.jetbrains.kotlin.config.ApiVersion
-import org.jetbrains.kotlin.config.LanguageVersion
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import build.gradle.dsl.withCompilerArguments
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
-import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
-import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
-import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    id(libraries.plugins.kotlin.multiplatform.get().pluginId)
     alias(libraries.plugins.kotlinx.kover)
 
+    id("build-multiplatform")
     id("build-project-default")
     id("build-publishing")
 }
@@ -21,58 +12,9 @@ plugins {
 kotlin {
     explicitApi()
 
-    targets.all {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    withCompilerArguments {
-                        requiresOptIn()
-                        suppressExpectActualClasses()
-                        suppressVersionWarnings()
-                    }
-                }
-            }
-        }
-    }
-
-    jvm {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    withCompilerArguments {
-                        requiresJsr305()
-                    }
-                }
-            }
-        }
-    }
-
-    js {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    sourceMap = true
-                }
-            }
-        }
-
-        browser {
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                    useConfigDirectory(project.projectDir.resolve("karma.config.d").resolve("js"))
-                }
-            }
-        }
-    }
-
     sourceSets {
         all {
             languageSettings.apply {
-                apiVersion = ApiVersion.KOTLIN_2_0.toString()
-                languageVersion = LanguageVersion.KOTLIN_2_0.toString()
-                progressiveMode = true
-
                 optIn("kotlin.contracts.ExperimentalContracts")
                 optIn("kotlin.RequiresOptIn")
                 optIn("kotlin.time.ExperimentalTime")
@@ -93,11 +35,11 @@ kotlin {
             }
 
             dependencies {
-                implementation(libraries.kotlinx.coroutines.core)
-                implementation(libraries.kotlinx.serialization.core)
+                api(project(":core"))
+                api(libraries.kotlinx.coroutines.core)
+                api(libraries.nirmato.ollama.client)
 
-                implementation(project(":core"))
-                implementation("org.nirmato.ollama:nirmato-ollama-client-ktor:unspecified")
+                implementation(libraries.nirmato.ollama.client.ktor)
             }
         }
 
@@ -108,14 +50,12 @@ kotlin {
             }
         }
 
-    }
-}
+        val jvmTest by getting {
+            dependencies {
+                implementation(libraries.ktor.client.cio)
+            }
+        }
 
-plugins.withType<YarnPlugin> {
-    yarn.apply {
-        lockFileDirectory = rootDir.resolve("gradle/js")
-        yarnLockMismatchReport = YarnLockMismatchReport.FAIL
-        yarnLockAutoReplace = true
     }
 }
 
@@ -126,13 +66,5 @@ tasks {
         }
         failOnWarning.set(true)
         offlineMode.set(true)
-    }
-}
-
-publishing {
-    publications.configureEach {
-        with(this as MavenPublication) {
-            artifactId = "${rootProject.name}-${project.name}-$name"
-        }
     }
 }

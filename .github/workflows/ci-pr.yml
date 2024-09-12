@@ -12,6 +12,11 @@ on:
             - ".idea/**"
             - ".editorconfig"
             - ".gitignore"
+
+concurrency:
+    group: ci-pr-${{ github.workflow }}-${{ github.event.ref }}-${{ github.event.pull_request.id }}"
+    cancel-in-progress: true
+
 jobs:
     checks:
         uses: ./.github/workflows/run-checks.yml

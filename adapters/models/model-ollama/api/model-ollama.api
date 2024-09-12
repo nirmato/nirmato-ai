@@ -1,0 +1,5 @@
+public final class org/nirmato/ai/ollama/model/language/model/language/OllamaLanguageModel : org/nirmato/ai/chat/model/LanguageModel {
+	public fun <init> (Lorg/nirmato/ollama/client/OllamaClient;)V
+	public fun generate (Lmodel/input/Prompt;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

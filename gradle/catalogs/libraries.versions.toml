@@ -4,17 +4,19 @@ gradle = "8.10"
 gradle-foojay = "0.8.0"
 kotlin = "2.0.20"
 kotlinx-bcv = "0.16.3"
-kotlinx-coroutines = "1.7.3"
+kotlinx-coroutines = "1.8.1"
 kotlinx-datetime = "0.6.0"
 kotlinx-io = "0.5.1"
 kotlinx-kover = "0.8.3"
-kotlinx-serialization = "1.6.3"
+kotlinx-serialization = "1.7.2"
 dokka-gradle-plugin = "1.9.20"
-ktor = "2.3.12"
+ktor = "3.0.0-rc-1"
+nirmato-ollama="unspecified"
 
 [libraries]
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka-gradle-plugin" }
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "gradle-foojay" }
+kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -82,6 +84,11 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-serialization-kotlinx-json-js = { module = "io.ktor:ktor-serialization-kotlinx-json-js", version.ref = "ktor" }
 ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
 ktor-serialization-kotlinx-json-wasm-js = { module = "io.ktor:ktor-serialization-kotlinx-json-wasm-js", version.ref = "ktor" }
+nirmato-ollama-client = { module = "org.nirmato.ollama:nirmato-ollama-client", version.ref = "nirmato-ollama" }
+nirmato-ollama-client-ktor = { module = "org.nirmato.ollama:nirmato-ollama-client-ktor", version.ref = "nirmato-ollama" }
+nirmato-ollama-client-ktor-jvm = { module = "org.nirmato.ollama:nirmato-ollama-client-ktor-jvm", version.ref = "nirmato-ollama" }
+nirmato-ollama-client-ktor-js = { module = "org.nirmato.ollama:nirmato-ollama-client-ktor-js", version.ref = "nirmato-ollama" }
+nirmato-ollama-client-ktor-wasm-js = { module = "org.nirmato.ollama:nirmato-ollama-client-ktor-wasm-js", version.ref = "nirmato-ollama" }
 
 [bundles]
 
@@ -90,7 +97,6 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka-gradle-plugin = { id = "org.jetbrains.dokka", version.ref = "dokka-gradle-plugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinx-bcv = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-bcv" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

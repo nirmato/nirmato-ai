@@ -45,12 +45,25 @@ public class PublishingPlugin : Plugin<Project> {
 
         project.pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
             fixOverlappingOutputsForSigningTask(project)
+
+            project.configure<PublishingExtension> {
+                publications.configureEach {
+                    if (this is MavenPublication) {
+                        artifactId = if (name == "kotlinMultiplatform") {
+                            "${project.rootProject.name}-${project.name}"
+                        } else {
+                            "${project.rootProject.name}-${project.name}-$name"
+                        }
+                    }
+                }
+            }
         }
 
         project.pluginManager.withPlugin("org.jetbrains.dokka") {
             configureDokka(project)
         }
 
+        val localMavenDirectory = project.rootProject.layout.buildDirectory.dir("local-m2")
         project.configure<PublishingExtension> {
             // configureEach reacts on new publications being registered and configures them too
             publications.configureEach {
@@ -100,8 +113,8 @@ public class PublishingPlugin : Plugin<Project> {
 
             repositories {
                 maven {
-                    name = "LocalRepo"
-                    url = project.uri("file://${project.layout.projectDirectory}/local-repo")
+                    name = "local"
+                    setUrl(localMavenDirectory)
                 }
             }
         }
