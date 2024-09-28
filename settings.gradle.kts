@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-import build.gradle.api.includeModule
+import org.gradle.api.initialization.includeModule
 
 pluginManagement {
     includeBuild("build-settings-logic")

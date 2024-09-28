@@ -1,19 +1,20 @@
 package build.gradle.plugins.build
 
-import build.gradle.dsl.withCompilerArguments
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
+import org.gradle.api.versionCatalog
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
-import org.jetbrains.kotlin.config.ApiVersion
-import org.jetbrains.kotlin.config.LanguageVersion
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.dsl.withCompilerArguments
 import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 
 public class MultiplatformPlugin : Plugin<Project> {
+
     override fun apply(project: Project) {
         project.apply<KotlinMultiplatformPluginWrapper>()
 
@@ -23,6 +24,10 @@ public class MultiplatformPlugin : Plugin<Project> {
             configureJsTarget()
             configureWasmJsTarget()
             configureKotlinSourceSets()
+
+            jvmToolchain {
+                languageVersion.set(JavaLanguageVersion.of(project.versionCatalog.findVersion("jvm-toolchain").get().requiredVersion))
+            }
         }
 
         project.configureJsPlatform()
@@ -87,8 +92,8 @@ public class MultiplatformPlugin : Plugin<Project> {
     private fun KotlinMultiplatformExtension.configureKotlinSourceSets() {
         sourceSets.configureEach {
             languageSettings.apply {
-                apiVersion = ApiVersion.KOTLIN_1_7.toString()
-                languageVersion = LanguageVersion.KOTLIN_2_0.toString()
+                apiVersion = "1.7"
+                languageVersion = "2.0"
                 progressiveMode = true
             }
         }
@@ -192,13 +197,13 @@ public class MultiplatformPlugin : Plugin<Project> {
 
     private fun KotlinMultiplatformExtension.configureJvmTarget() {
         jvm {
-            this.compilations.configureEach {
-                this.compileTaskProvider.configure {
-                    this.compilerOptions {
-                        this.withCompilerArguments {
-                            this.requiresJsr305()
+            compilations.configureEach {
+                compileTaskProvider.configure {
+                    compilerOptions {
+                        withCompilerArguments {
+                            requiresJsr305()
                         }
-                        this.jvmTarget.set(JvmTarget.JVM_17)
+                        jvmTarget.set(JvmTarget.JVM_17)
                     }
                 }
             }

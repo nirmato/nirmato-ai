@@ -19,7 +19,6 @@ kotlin {
                 optIn("kotlin.RequiresOptIn")
                 optIn("kotlin.time.ExperimentalTime")
                 optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
-                optIn("kotlinx.serialization.ExperimentalSerializationApi")
             }
         }
 

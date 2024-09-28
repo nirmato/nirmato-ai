@@ -11,7 +11,6 @@ configurations.all {
 
 dependencies {
     api(libraries.kotlin.gradle.plugin)
-    api(libraries.kotlin.compiler.embeddable)
     api(libraries.dokka.gradle.plugin)
 }
 

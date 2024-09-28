@@ -4,7 +4,5 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 public class DefaultProjectPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
-        // empty
-    }
+    override fun apply(project: Project): Unit = Unit
 }

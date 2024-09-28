@@ -1,6 +1,4 @@
-package build.gradle.api
-
-import org.gradle.api.initialization.Settings
+package org.gradle.api.initialization
 
 public fun Settings.includeModule(name: String) {
     require(name.isNotBlank())

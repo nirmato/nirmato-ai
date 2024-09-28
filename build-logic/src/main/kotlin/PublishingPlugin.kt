@@ -1,9 +1,9 @@
 package build.gradle.plugins.build
 
-import java.lang.System.getenv
 import java.util.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.getProperty
 import org.gradle.api.plugins.JavaBasePlugin
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.publish.PublishingExtension
@@ -68,7 +68,7 @@ public class PublishingPlugin : Plugin<Project> {
             // configureEach reacts on new publications being registered and configures them too
             publications.configureEach {
                 if (this is MavenPublication) {
-                    val base = "github.com/nirmato/nirmato-ai"
+                    val base = "github.com/nirmato/nirmato-ollama"
 
                     pom {
                         // using providers because the name and description can be set after application of the plugin
@@ -121,9 +121,9 @@ public class PublishingPlugin : Plugin<Project> {
 
         project.apply<SigningPlugin>()
         project.configure<SigningExtension> {
-            val signingKeyId = getenv("SIGNING_KEY_ID")
-            val signingSecretKey = getenv("SIGNING_KEY")?.let { String(Base64.getDecoder().decode(it)) }
-            val signingPassword = getenv("SIGNING_PASSWORD") ?: ""
+            val signingKeyId = project.getProperty(projectKey = "gpg.signing.key.id", environmentKey = "GPG_SIGNING_KEY_ID")
+            val signingSecretKey = project.getProperty(projectKey = "gpg.signing.key", environmentKey = "GPG_SIGNING_KEY")?.let { String(Base64.getDecoder().decode(it)) }
+            val signingPassword = project.getProperty(projectKey = "gpg.signing.passphrase", environmentKey = "GPG_SIGNING_PASSPHRASE") ?: ""
 
             if (signingKeyId != null) {
                 useInMemoryPgpKeys(signingKeyId, signingSecretKey, signingPassword)

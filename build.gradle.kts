@@ -69,6 +69,17 @@ tasks {
         exclude("**/resources/**", "**/build/**", "**/build.gradle.kts/**", "**/settings.gradle.kts/**")
     }
 
+    withType<Detekt>().configureEach {
+        jvmTarget = "17"
+        reports {
+            html.required.set(true)
+            xml.required.set(false)
+            txt.required.set(false)
+            md.required.set(false)
+            sarif.required.set(false)
+        }
+    }
+
     named<Wrapper>("wrapper") {
         gradleVersion = libraries.versions.gradle.asProvider().get()
         distributionType = DistributionType.ALL
