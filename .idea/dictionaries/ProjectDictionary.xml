@@ -1,7 +1,12 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="ProjectDictionary">
-    <words>
-      <w>nirmato</w>
-    </words>
-  </dictionary>
+    <dictionary name="ProjectDictionary">
+        <words>
+            <w>Foojay</w>
+            <w>codeql</w>
+            <w>llava</w>
+            <w>nirmato</w>
+            <w>ollama</w>
+            <w>tinyllama</w>
+        </words>
+    </dictionary>
 </component>

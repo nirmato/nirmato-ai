@@ -1,9 +1,11 @@
 plugins {
+    `maven-publish`
+
     id("java-platform")
-    id("build-publishing")
+    id("build-maven-publishing-configurer")
 }
 
-description = "BOM"
+description = "Platform BOM"
 
 val me = project
 rootProject.subprojects {

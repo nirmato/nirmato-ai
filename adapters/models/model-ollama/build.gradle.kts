@@ -1,12 +1,11 @@
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.gradle.DokkaTaskPartial
-
 plugins {
     alias(libraries.plugins.kotlinx.kover)
 
-    id("build-multiplatform")
+    `maven-publish`
+
+    id("build-kotlin-multiplatform")
     id("build-project-default")
-    id("build-publishing")
+    id("build-maven-publishing-configurer")
 }
 
 kotlin {
@@ -54,16 +53,5 @@ kotlin {
                 implementation(libraries.ktor.client.cio)
             }
         }
-
-    }
-}
-
-tasks {
-    withType<DokkaTaskPartial>().configureEach {
-        dokkaSourceSets.configureEach {
-            documentedVisibilities.set(Visibility.values().toSet())
-        }
-        failOnWarning.set(true)
-        offlineMode.set(true)
     }
 }

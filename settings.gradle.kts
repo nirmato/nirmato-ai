@@ -1,6 +1,6 @@
-@file:Suppress("UnstableApiUsage")
-
 import org.gradle.api.initialization.includeModule
+import org.gradle.api.initialization.includeSample
+import org.gradle.api.provider.gradleBooleanProperty
 
 pluginManagement {
     includeBuild("build-settings-logic")
@@ -9,12 +9,13 @@ pluginManagement {
 
 plugins {
     id("build-settings-default")
+    id("build-foojay")
 }
 
 rootProject.name = "nirmato-ai"
 
 includeModule("core")
-includeModule("bom")
+includeModule("platform")
 includeModule("version-catalog")
 
 fun includeAll(module: String) {
