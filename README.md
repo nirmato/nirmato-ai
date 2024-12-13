@@ -22,14 +22,7 @@ Nirmato AI is an application orchestrator to develop AI applications.
 |       iOS       | <ul><li>`iosX64`</li><li>`iosArm64`</li><li>`iosSimulatorArm64`</li></ul>                                          |
 |      MacOS      | <ul><li>`macosX64`</li><li>`macosArm64`</li></ul>                                                                  |
 |     WatchOS     | <ul><li>`watchosX64`</li><li>`watchosArm64`</li><li>`watchosDeviceArm64`</li><li>`watchosSimulatorArm64`</li></ul> |
-|      tvOS       | <ul><li>`tvosX64`</li><li>`tvosArm64`</li><li>`tvosSimulatorArm64`</li></ul>                                       |
-
-## Compatibility table with Ollama API
-
-| Version | Ollama API |
-|---------|------------|
-| 1.0.x   | 0.3.3      |
-| < 1.0.0 | 0.3.3      |
+|      TvOS       | <ul><li>`tvosX64`</li><li>`tvosArm64`</li><li>`tvosSimulatorArm64`</li></ul>                                       |
 
 ## Contributions
 
