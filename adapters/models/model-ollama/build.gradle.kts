@@ -37,7 +37,7 @@ kotlin {
                 api(libraries.kotlinx.coroutines.core)
                 api(libraries.nirmato.ollama.client)
 
-                implementation(libraries.nirmato.ollama.client.ktor)
+                implementation(libraries.nirmato.ollama.client)
             }
         }
 

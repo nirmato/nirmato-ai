@@ -1,15 +1,15 @@
 [versions]
 detekt = "1.23.7"
-dokka-gradle-plugin = "2.0.0-Beta"
-gradle-foojay = "0.8.0"
-kotlin = "2.1.0"
-kotlinx-bcv = "0.16.3"
-kotlinx-coroutines = "1.9.0"
+dokka-gradle-plugin = "2.0.0"
+gradle-foojay = "0.9.0"
+kotlin = "2.1.20-Beta1"
+kotlinx-bcv = "0.17.0"
+kotlinx-coroutines = "1.10.1"
 kotlinx-datetime = "0.6.1"
-kotlinx-io = "0.5.4"
+kotlinx-io = "0.6.0"
 kotlinx-kover = "0.8.3"
 kotlinx-serialization = "1.7.3"
-ktor = "3.0.1"
+ktor = "3.0.3"
 nirmato-ollama="0.1.0"
 
 [libraries]
@@ -43,7 +43,6 @@ ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "k
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 nirmato-ollama-client = { module = "org.nirmato.ollama:nirmato-ollama-client", version.ref = "nirmato-ollama" }
-nirmato-ollama-client-ktor = { module = "org.nirmato.ollama:nirmato-ollama-client-ktor", version.ref = "nirmato-ollama" }
 
 [bundles]
 
