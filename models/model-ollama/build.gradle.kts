@@ -33,9 +33,8 @@ kotlin {
             }
 
             dependencies {
-                api(project(":core"))
-                api(libraries.kotlinx.coroutines.core)
-                api(libraries.nirmato.ollama.client)
+                implementation(project(":modules:core"))
+                implementation(libraries.kotlinx.coroutines.core)
 
                 implementation(libraries.nirmato.ollama.client)
             }

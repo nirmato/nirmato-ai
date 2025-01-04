@@ -54,7 +54,7 @@ public class MavenPublishConfigurerPlugin : Plugin<Project> {
             // configureEach reacts on new publications being registered and configures them too
             publications.configureEach {
                 if (this is MavenPublication) {
-                    val base = "github.com/nirmato/nirmato-ollama"
+                    val base = "github.com/nirmato/nirmato-ai"
 
                     pom {
                         // using providers because the name and description can be set after application of the plugin

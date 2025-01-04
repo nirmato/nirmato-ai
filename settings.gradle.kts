@@ -1,7 +1,3 @@
-import org.gradle.api.initialization.includeModule
-import org.gradle.api.initialization.includeSample
-import org.gradle.api.provider.gradleBooleanProperty
-
 pluginManagement {
     includeBuild("build-settings-logic")
     includeBuild("build-logic")
@@ -14,18 +10,11 @@ plugins {
 
 rootProject.name = "nirmato-ai"
 
-includeModule("core")
-includeModule("platform")
-includeModule("version-catalog")
+include("modules:core")
 
-fun includeAll(module: String) {
-    include(module)
+include("publishing:bom")
+include("publishing:version-catalog")
 
-    val name = module.replace(":", "/")
-    file("$rootDir/$name").listFiles().forEach {
-        include("$module:${it.name}")
-    }
-}
+include("models:model-ollama")
 
-includeAll("adapters:models")
-includeAll("adapters:vector-stores")
+include("stores:store-chroma")

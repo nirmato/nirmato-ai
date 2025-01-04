@@ -25,10 +25,12 @@ apiValidation {
 
     ignoredProjects.addAll(
         listOf(
-            "platform",
+            "bom",
             "version-catalog",
         )
     )
+
+    nonPublicMarkers.add("org.nirmato.ai.annotations.InternalApi")
 }
 
 tasks {
